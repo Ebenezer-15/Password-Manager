@@ -17,7 +17,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/passwords/create', [PasswordController::class, 'create'])->name('password.create');
     Route::post('/passwords/store', [PasswordController::class, 'store'])->name('soc.store');
-    Route::put('/passwords/{id}/update', [PasswordController::class, 'update'])->name('password.update');
+    Route::delete('/passwords/{id}', [PasswordController::class, 'destroy'])->name('password.destroy');
+    Route::put('/passwords/{id}', [PasswordController::class, 'update'])->name('password.update');
 });
 
 require __DIR__ . '/auth.php';

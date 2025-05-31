@@ -47,17 +47,26 @@
                                             class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
 
 
-                                            <button onclick="deletePassword({{ $password->id }})"
+                                            <button
+                                                onclick="openEditModal({{ $password->id }}, '{{ addslashes($password->title) }}', '{{ addslashes($password->link) }}', '{{ addslashes($password->password) }}')"
                                                 class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                                 <i class="fas fa-pencil mr-2"></i>
                                                 Edit
                                             </button>
 
-                                            <button onclick="deletePassword({{ $password->id }})"
-                                                class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
-                                                <i class="fas fa-trash mr-2"></i>
-                                                Delete
-                                            </button>
+
+
+                                            <form action="{{ route('password.destroy', $password->id) }}" method="POST"
+                                                onsubmit="return confirm('Are you sure you want to delete this password?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
+                                                    <i class="fas fa-trash mr-2"></i>
+                                                    Delete
+                                                </button>
+                                            </form>
+
                                         </div>
                                     </div>
                                 </div>
@@ -120,6 +129,43 @@
     </div>
 
     <div id="toast" class="toast">Password copied to clipboard!</div>
+    <!-- Edit Modal -->
+    <div id="editModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden  items-center justify-center">
+        <div class="bg-white p-6 rounded-lg w-full max-w-md">
+            <form id="editForm" method="POST">
+                @csrf
+                @method('PUT')
+                <h2 class="text-lg font-semibold mb-4">Edit Password</h2>
+                <input type="hidden" id="editId" name="id">
+
+                <div class="mb-3">
+                    <label for="editTitle" class="block text-sm font-medium text-gray-700">Title</label>
+                    <input type="text" id="editTitle" name="title"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="editLink" class="block text-sm font-medium text-gray-700">Link</label>
+                    <input type="text" id="editLink" name="link"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="editPassword" class="block text-sm font-medium text-gray-700">Password</label>
+                    <input type="text" id="editPassword" name="password"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm" required>
+                </div>
+
+                <div class="flex justify-end gap-3">
+                    <button type="button" onclick="closeEditModal()"
+                        class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">Cancel</button>
+                    <button type="submit"
+                        class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 
     <script>
         function copyToClipboard(text) {
@@ -166,6 +212,18 @@
                 eyeIconClosed.classList.add('hidden');
                 eyeIconOpen.classList.remove('hidden');
             }
+        }
+
+        function openEditModal(id, title, link, password) {
+            document.getElementById('editModal').classList.remove('hidden');
+            document.getElementById('editTitle').value = title;
+            document.getElementById('editLink').value = link;
+            document.getElementById('editPassword').value = password;
+            document.getElementById('editForm').action = `/passwords/${id}`;
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').classList.add('hidden');
         }
     </script>
 

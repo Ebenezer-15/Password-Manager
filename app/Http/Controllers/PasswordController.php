@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+// use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Password;
 use Illuminate\Support\Facades\Auth;
@@ -17,27 +17,26 @@ class PasswordController extends Controller
         $users = Auth::user(); // this fetches the logged-in user as a single User object
         // Fetch all passwords for the logged-in user
         $passwords = Password::where('user_id', Auth::id())->get();
-        return view('dashboard', compact('passwords','users'));
+        return view('dashboard', compact('passwords', 'users'));
     }
 
     // Store a new password
     public function store(Request $request)
     {
-    $validated = $request->validate([
-        'title' => 'required|string|max:255',
-        'link' => 'required|string|max:255',
-        'password' => 'required|string',
-    ]);
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'link' => 'required|string|max:255',
+            'password' => 'required|string',
+        ]);
 
-    $scraper = new WebScraperService();
-    $siteInfo = $scraper->scrapeWebsite($validated['link']);
+        $scraper = new WebScraperService();
+        $siteInfo = $scraper->scrapeWebsite($validated['link']);
 
-    // If no title was provided, use the scraped title
-    if (empty($validated['title']) && !empty($siteInfo['title'])) {
-        $validated['title'] = $siteInfo['title'];
-    }
+        // If no title was provided, use the scraped title
+        if (empty($validated['title']) && !empty($siteInfo['title'])) {
+            $validated['title'] = $siteInfo['title'];
+        }
 
-    // $password = Password::create($validated);
 
         Password::create([
             'user_id' => Auth::id(),
@@ -62,6 +61,17 @@ class PasswordController extends Controller
         $password->update($validated);
 
         return redirect()->route('dashboard')->with('success', 'Password updated!');
+    }
+
+
+
+    public function destroy($id)
+    {
+        $password = Password::where('id', $id)->where('user_id', Auth::id())->firstOrFail();
+
+        $password->delete();
+
+        return redirect()->route('dashboard')->with('success', 'Password deleted successfully.');
     }
 
 
