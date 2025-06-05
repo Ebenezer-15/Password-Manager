@@ -36,7 +36,10 @@
                     class="block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     autocomplete="password">
             </div>
-
+            <button type="submit"
+                class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-md transition-colors duration-200">
+                Generate Password
+            </button>
             <button type="submit"
                 class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-md transition-colors duration-200">
                 Save Password

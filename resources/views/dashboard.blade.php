@@ -4,10 +4,10 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Password Manager
             </h2>
-            <a href="{{ route('password.create') }}"
+            {{-- <a href="{{ route('password.create') }}"
                 class="inline-block px-4 py-2 border border-blue-600 text-blue-600 text-sm font-medium rounded hover:bg-blue-600 hover:text-white transition-colors duration-200">
                 Create New Password.
-            </a>
+            </a> --}}
             <a href="{{ route('password.create') }}"
                 class="inline-block px-4 py-2 border border-blue-600 text-blue-600 text-sm font-medium rounded hover:bg-blue-600 hover:text-white transition-colors duration-200">
                 Add New Password
