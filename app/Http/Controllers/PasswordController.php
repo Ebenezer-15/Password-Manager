@@ -42,6 +42,7 @@ class PasswordController extends Controller
             'user_id' => Auth::id(),
             'title' => $request->title,
             'link' => $request->link,
+            'favicon' => $siteInfo['favicon'] ?? null,
             'password' => $request->password,
         ]);
 

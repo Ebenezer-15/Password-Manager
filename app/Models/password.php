@@ -23,9 +23,9 @@ class Password extends Model
         'password',
         'favicon'
     ];
-     protected $appends = ['favicon'];
-     
-     public function getFaviconAttribute()
+    protected $appends = ['favicon'];
+
+    public function getFaviconAttribute()
     {
         return 'https://www.google.com/s2/favicons?domain=' . $this->link;
     }

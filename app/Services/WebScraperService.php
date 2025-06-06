@@ -59,9 +59,10 @@ class WebScraperService
         }
     }
 
-    private function resolveUrl($base, $rel) {
+    private function resolveUrl($base, $rel)
+    {
         if (parse_url($rel, PHP_URL_SCHEME) != '') return $rel;
-        if ($rel[0] == '/') return parse_url($base, PHP_URL_SCHEME).'://'.parse_url($base, PHP_URL_HOST).$rel;
-        return dirname($base).'/'.$rel;
+        if ($rel[0] == '/') return parse_url($base, PHP_URL_SCHEME) . '://' . parse_url($base, PHP_URL_HOST) . $rel;
+        return dirname($base) . '/' . $rel;
     }
 }
