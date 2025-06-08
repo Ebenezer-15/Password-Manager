@@ -1,61 +1,86 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+ <h1>🔐 Password Vault</h1>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+  <p>
+    A lightweight and secure password manager built with <strong>Laravel</strong>, featuring auto-website scraping, password generation, and a clean UI.
+    Store and manage your credentials with ease — all encrypted and tied to your user account.
+  </p>
 
-## About Laravel
+  <h2>✨ Features</h2>
+  <ul>
+    <li>🔑 <strong>Save and manage passwords</strong></li>
+    <li>🌐 <strong>Auto-fetch website metadata</strong> (title and favicon)</li>
+    <li>🔒 <strong>Generate strong random passwords</strong></li>
+    <li>👤 <strong>User-specific password storage</strong></li>
+    <li>📱 <strong>Responsive UI</strong> with Tailwind CSS</li>
+    <li>⚙️ <strong>Built using Laravel & Blade</strong></li>
+  </ul>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+  <h2>🖼️ Screenshots</h2>
+  <p><em>(Include screenshots or gifs of the UI here — dashboard, create form, etc.)</em></p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+  <h2>🚀 Getting Started</h2>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+  <h3>Prerequisites</h3>
+  <ul>
+    <li>PHP &gt;= 8.1</li>
+    <li>Composer</li>
+    <li>Laravel 10+</li>
+    <li>Node.js & NPM</li>
+    <li>MySQL or SQLite</li>
+  </ul>
 
-## Learning Laravel
+  <h3>Installation</h3>
+  <pre><code>git clone https://github.com/your-username/password-vault.git
+cd password-vault
+cp .env.example .env
+composer install
+php artisan key:generate
+php artisan migrate
+npm install &amp;&amp; npm run dev
+php artisan serve</code></pre>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+  <blockquote>
+    Visit <code>http://127.0.0.1:8000</code> to start using the app.
+  </blockquote>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+  <h3>Seed Demo User (Optional)</h3>
+  <pre><code>php artisan tinker
+&gt;&gt;&gt; \App\Models\User::factory()-&gt;create(['email' =&gt; 'test@example.com', 'password' =&gt; bcrypt('password')])</code></pre>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+  <h2>🛠️ Tech Stack</h2>
+  <ul>
+    <li><strong>Backend:</strong> Laravel</li>
+    <li><strong>Frontend:</strong> Blade + Tailwind CSS</li>
+    <li><strong>Scraping:</strong> Custom WebScraperService</li>
+    <li><strong>Authentication:</strong> Laravel Breeze / Sanctum (depending on setup)</li>
+  </ul>
 
-## Laravel Sponsors
+  <h2>🔐 Security</h2>
+  <ul>
+    <li>Passwords are encrypted before storage</li>
+    <li>Routes are protected by authentication middleware</li>
+    <li>Only the logged-in user can access their credentials</li>
+  </ul>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+  <h2>📁 Folder Structure Highlights</h2>
+  <pre><code>app/
+├── Http/Controllers/PasswordController.php
+├── Models/Password.php
+├── Services/WebScraperService.php
+resources/views/
+└── password/create.blade.php
+routes/web.php</code></pre>
 
-### Premium Partners
+  <h2>💡 Future Improvements</h2>
+  <ul>
+    <li>🔐 Two-Factor Authentication (2FA)</li>
+    <li>🧾 Export/Import functionality</li>
+    <li>📱 Progressive Web App support</li>
+    <li>🧠 AI-generated password suggestions</li>
+  </ul>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+  <h2>🤝 Contributing</h2>
+  <p>Feel free to fork and improve the app. Pull Requests are welcome!</p>
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+  <h2>📄 License</h2>
+  <p>MIT License — <a href="https://github.com/your-username" target="_blank">your-name</a></p>
