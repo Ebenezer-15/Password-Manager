@@ -30,7 +30,7 @@
   </ul>
 
   <h3>Installation</h3>
-  <pre><code>git clone https://github.com/your-username/password-vault.git
+  <pre><code>git clone https://github.com/Ebenezer-15/password-vault.git
 cd password-vault
 cp .env.example .env
 composer install
