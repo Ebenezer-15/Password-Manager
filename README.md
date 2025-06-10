@@ -83,4 +83,4 @@ routes/web.php</code></pre>
   <p>Feel free to fork and improve the app. Pull Requests are welcome!</p>
 
   <h2>📄 License</h2>
-  <p>MIT License — <a href="https://github.com/your-username" target="_blank">your-name</a></p>
+  <p>MIT License — <a href="https://github.com/Ebenezer-15" target="_blank">Ebenezer</a></p>
