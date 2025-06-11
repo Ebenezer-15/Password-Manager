@@ -69,7 +69,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <p class="text-sm text-gray-700 break-words flex-1">{{ $users->email }}</p>
+                                <p class="text-sm text-gray-700 break-words flex-1">{{ $password->username }}</p>
                                 <div class="flex items-center gap-2 mt-2">
                                     @if ($password->favicon)
                                         <img src="{{ $password->favicon }}" alt=" icon" class="w-4 h-4">

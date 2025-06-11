@@ -20,6 +20,7 @@ class Password extends Model
         'user_id',
         'title',
         'link',
+        'username',
         'password',
         'favicon'
     ];
